@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="840px"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="672px"
+        android:background="@drawable/mood_top_bg">
+
+        <ImageView
+            android:scaleType="centerCrop"
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ImageView>
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="90px"
+            android:layout_marginRight="90px"
+            android:gravity="center"
+            android:text="“Nothing we do , however virtuous ,can be alone ; therefore we are saved by love.”"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"></TextView>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="168px"
+        android:background="@drawable/mood_bottom_bg"
+        android:orientation="horizontal"
+        android:paddingLeft="15px"
+        android:paddingRight="15px">
+
+        <LinearLayout
+            android:id="@+id/like"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="72px"
+                android:layout_height="72px"
+                android:src="@drawable/like"></ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24px"
+                android:text="Like"
+                android:textColor="#ff4d4d4d"
+                android:textSize="13sp"></TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/save"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="72px"
+                android:layout_height="72px"
+                android:src="@drawable/save"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24px"
+                android:text="Save"
+                android:textColor="#ff4d4d4d"
+                android:textSize="13sp"></TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/copy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="72px"
+                android:layout_height="72px"
+                android:src="@drawable/copy"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24px"
+                android:text="Copy"
+                android:textColor="#ff4d4d4d"
+                android:textSize="13sp"></TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/share"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="72px"
+                android:layout_height="72px"
+                android:src="@drawable/share"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24px"
+                android:text="Share"
+                android:textColor="#ff4d4d4d"
+                android:textSize="13sp"></TextView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

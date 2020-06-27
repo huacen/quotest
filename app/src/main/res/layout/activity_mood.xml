@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DCDCDC">
+
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="72px"
+        android:layout_height="72px"
+        android:layout_marginLeft="48px"
+        android:layout_marginTop="45px"
+        android:layout_marginRight="48px"
+        android:src="@drawable/back"></ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="72px"
+        android:layout_alignBottom="@id/back"
+        android:layout_toRightOf="@id/back"
+        android:gravity="center_vertical"
+        android:text="Best Quotes  Status"
+        android:textColor="#4D4D4D"></TextView>
+
+
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/back"
+        android:layout_marginLeft="48px"
+        android:layout_marginTop="48px"
+        android:layout_marginRight="48px"
+        android:layout_marginBottom="192px"
+        android:numColumns="1"
+        android:verticalSpacing="24px"></GridView>
+
+
+</RelativeLayout>

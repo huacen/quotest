@@ -1,5 +1,7 @@
 package com.flying.famous.quotes;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,14 +14,19 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.flying.famous.quotes.db.DBManager;
+import com.flying.famous.quotes.db.Quotes;
+import com.flying.famous.quotes.manager.LikeManager;
+import com.flying.famous.quotes.manager.ShareManager;
+import com.flying.greendao.db.QuotesDao;
 import com.zhy.autolayout.AutoLayoutActivity;
 
 import java.util.ArrayList;
@@ -32,15 +39,18 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
 
     private static final String DATA = "data";
 
-    private ArrayList<String> list = new ArrayList();
+    private ArrayList<Quotes> list = new ArrayList();
     private LayoutInflater layoutInflater;
     private GridView gridView;
-    private List<String> imageList = new ArrayList<>();
+    private List<String> imageList = new ArrayList<String>();
     private int index = -1;
+    private ClipboardManager cm;
+
+
     private View.OnClickListener change = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            int index = (int) view.getTag();
+//            int index = (int) view.getTag();
             String url = getImageUrl();
             if (!TextUtils.isEmpty(url)) {
                 Glide
@@ -56,7 +66,14 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
     private View.OnClickListener like = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
+            int index = (int) view.getTag();
+            Quotes quotes = list.get(index);
+            LikeManager.getInstance().likeOrNot(quotes);
+            ImageView likeIcon = view.findViewById(R.id.like_icon);
+            if (likeIcon != null) {
+                boolean isLike = LikeManager.getInstance().isLike(quotes);
+                likeIcon.setImageResource(isLike ? R.drawable.like : R.drawable.unlike);
+            }
         }
     };
     private View.OnClickListener save = new View.OnClickListener() {
@@ -69,20 +86,24 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
         @Override
         public void onClick(View view) {
             int index = (int) view.getTag();
+            ClipData mClipData = ClipData.newPlainText("Label", list.get(index).getText());
+            cm.setPrimaryClip(mClipData);
+            Toast.makeText(MoodActivity.this.getApplicationContext(), "已复制到剪贴板", Toast.LENGTH_SHORT).show();
         }
     };
     private View.OnClickListener share = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             int index = (int) view.getTag();
-
+            Quotes quotes = list.get(index);
+            ShareManager.getInstance().shareTxt(MoodActivity.this, quotes.getText());
         }
     };
 
 
-    public static void start(Context context, ArrayList<String> data) {
+    public static void start(Context context, long id) {
         Intent intent = new Intent(context, MoodActivity.class);
-        intent.putStringArrayListExtra(DATA, data);
+        intent.putExtra(DATA, id);
         context.startActivity(intent);
     }
 
@@ -92,12 +113,15 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood);
-        Log.i(TAG, "xxxxxxxxx");
+        long id = getIntent().getLongExtra(DATA, 0L);
 
-        ArrayList<String> data = getIntent().getStringArrayListExtra(DATA);
-        if (data != null && data.size() > 0) {
-            list.addAll(data);
+        List<Quotes> quotes = DBManager.INSTANCE().getQuotesDao().queryBuilder().where(QuotesDao.Properties.Tid.eq(id)).build().list();
+        if (quotes != null && quotes.size() > 0) {
+            list.addAll(quotes);
         }
+
+        cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+
 
         gridView = findViewById(R.id.gridView);
         layoutInflater = LayoutInflater.from(this);
@@ -131,7 +155,7 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.back) {
-
+            finish();
         }
     }
 
@@ -162,6 +186,7 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
                 holder.text = convertView.findViewById(R.id.text);
                 holder.image = convertView.findViewById(R.id.image);
                 holder.like = convertView.findViewById(R.id.like);
+                holder.likeIcon = convertView.findViewById(R.id.like_icon);
                 holder.save = convertView.findViewById(R.id.save);
                 holder.copy = convertView.findViewById(R.id.copy);
                 holder.share = convertView.findViewById(R.id.share);
@@ -183,8 +208,10 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
             holder.share.setTag(i);
 
 
-            String mood = list.get(i);
-            holder.text.setText(mood);
+            Quotes quotes = list.get(i);
+            holder.text.setText(quotes.getText());
+            boolean isLike = LikeManager.getInstance().isLike(quotes);
+            holder.likeIcon.setImageResource(isLike ? R.drawable.like : R.drawable.unlike);
 
             String url = getImageUrl();
             if (!TextUtils.isEmpty(url)) {
@@ -205,6 +232,7 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
             TextView text;
             ImageView image;
             View like;
+            ImageView likeIcon;
             View save;
             View copy;
             View share;

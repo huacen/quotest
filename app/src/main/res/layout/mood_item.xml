@@ -49,6 +49,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/like_icon"
                 android:layout_width="72px"
                 android:layout_height="72px"
                 android:src="@drawable/like"></ImageView>

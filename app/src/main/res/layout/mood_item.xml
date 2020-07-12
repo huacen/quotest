@@ -13,7 +13,7 @@
         android:background="@drawable/mood_top_bg">
 
         <ImageView
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></ImageView>
@@ -52,7 +52,7 @@
                 android:id="@+id/like_icon"
                 android:layout_width="72px"
                 android:layout_height="72px"
-                android:src="@drawable/like"></ImageView>
+                android:src="@drawable/like_default"></ImageView>
 
             <TextView
                 android:layout_width="match_parent"

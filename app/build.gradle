@@ -15,11 +15,32 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
+
+    signingConfigs {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            keyAlias 'alias'
+            keyPassword 'zrxyh521'
+            storeFile file('E:/code_test/FamousQuotes/app/quotes.jks')
+            storePassword 'zrxyh521'
         }
+    }
+
+
+    lintOptions {
+        abortOnError false
+    }
+
+    buildTypes {
+        debug{
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled true
+            proguardFile 'proguard-rules.pro'
+            zipAlignEnabled true
+            signingConfig signingConfigs.release
+        }
+
     }
 
 //    compileOptions {
@@ -45,14 +66,14 @@ dependencies {
     implementation 'com.github.open-android:SharedPreferencesUtils:0.1.0'
     //noinspection GradleCompatible
     implementation 'com.android.support:design:25.3.1'
-//    implementation group: 'org.apache.poi', name: 'poi', version: '4.1.2'
-//    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.2'
-//    implementation group: 'org.apache.xmlbeans', name: 'xmlbeans', version: '2.6.0'
+    implementation 'pub.devrel:easypermissions:2.0.1'
+    implementation 'com.github.zongxiaomi:AndroidMail:1.07'
+
 
 }
 greendao{
     schemaVersion 2
-    daoPackage 'com.flying.greendao.db'
+    daoPackage 'com.flying.famous.quotes.db.gen'
     targetGenDir 'src/main/java'
 }
 repositories {

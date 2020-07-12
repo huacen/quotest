@@ -3,8 +3,8 @@ package com.flying.famous.quotes.manager;
 import android.util.Log;
 
 import com.flying.famous.quotes.db.DBManager;
-import com.flying.famous.quotes.db.Quotes;
-import com.flying.famous.quotes.db.Type;
+import com.flying.famous.quotes.db.entity.Quotes;
+import com.flying.famous.quotes.db.entity.Type;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -15,7 +15,6 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -36,21 +35,16 @@ public class DataManager {
     private DataManager() {
     }
 
-    public void init() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                readExcel(new File("/sdcard/xls/111.xlsx"));
-                readExcel(new File("/sdcard/xls/222.xlsx"));
-                readExcel(new File("/sdcard/xls/333.xlsx"));
-                readExcel(new File("/sdcard/xls/444.xlsx"));
-                Log.i(TAG, "type size = " + map.keySet().size());
-                for (String key : map.keySet()) {
-                    Log.i(TAG, "key  = " + key + "; size" + map.get(key).size());
-                    DBManager.INSTANCE().getQuotesDao().insertOrReplaceInTx(map.get(key));
-                }
-            }
-        }).start();
+    public void syncInit() {
+        readExcel(new File("/sdcard/xls/111.xlsx"));
+        readExcel(new File("/sdcard/xls/222.xlsx"));
+        readExcel(new File("/sdcard/xls/333.xlsx"));
+        readExcel(new File("/sdcard/xls/444.xlsx"));
+        Log.i(TAG, "type size = " + map.keySet().size());
+        for (String key : map.keySet()) {
+            Log.i(TAG, "key  = " + key + "; size" + map.get(key).size());
+            DBManager.INSTANCE().getQuotesDao().insertOrReplaceInTx(map.get(key));
+        }
     }
 
 
@@ -67,6 +61,7 @@ public class DataManager {
             // sheet.getRows()返回该页的总行数
 
             for (int i = 0; i <= sheet.getLastRowNum(); i++) {
+
                 try {
                     XSSFRow row = sheet.getRow(i);
                     String type = row.getCell(0).getStringCellValue();

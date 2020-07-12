@@ -4,23 +4,25 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/like"
-            android:icon="@drawable/unlike"
+            android:icon="@drawable/like_menu"
             android:title="Like Quotes"></item>
+        <!--
+              <item
+                  android:id="@+id/quote_of_the_day"
+                  android:icon="@drawable/quote_of_the_day"
+                  android:title="Quote of the day"></item>
 
-        <item
-            android:id="@+id/quote_of_the_day"
-            android:icon="@drawable/quote_of_the_day"
-            android:title="Quote of the day"></item>
+          <item
+                  android:id="@+id/tap_sound"
+                  android:icon="@drawable/tap_sound"
+                  android:title="Tap Sound">
 
-        <item
-            android:id="@+id/tap_sound"
-            android:icon="@drawable/tap_sound"
-            android:title="Tap Sound"></item>
+              </item>-->
 
-        <item
-            android:id="@+id/faqs"
-            android:icon="@drawable/faqs"
-            android:title="FAQS"></item>
+        <!--        <item
+                    android:id="@+id/faqs"
+                    android:icon="@drawable/faqs"
+                    android:title="FAQS"></item>-->
         <item
             android:id="@+id/contact_us"
             android:icon="@drawable/contact_us"
@@ -33,14 +35,14 @@
             android:id="@+id/share_app"
             android:icon="@drawable/share_app"
             android:title="Share App"></item>
-        <item
-            android:id="@+id/facebook"
-            android:icon="@drawable/facebook"
-            android:title="LIke on Facebook"></item>
-        <item
-            android:id="@+id/privacy_policy"
-            android:icon="@drawable/privacy_policy"
-            android:title="Privacy Policy"></item>
+        <!--        <item
+                    android:id="@+id/facebook"
+                    android:icon="@drawable/facebook"
+                    android:title="LIke on Facebook"></item>
+                <item
+                    android:id="@+id/privacy_policy"
+                    android:icon="@drawable/privacy_policy"
+                    android:title="Privacy Policy"></item>-->
 
 
     </group>

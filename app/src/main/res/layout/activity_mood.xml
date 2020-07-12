@@ -21,7 +21,9 @@
         android:layout_toRightOf="@id/back"
         android:gravity="center_vertical"
         android:text="Best Quotes  Status"
-        android:textColor="#4D4D4D"></TextView>
+        android:textColor="#4D4D4D"
+        android:textSize="20sp"
+        android:textStyle="bold"></TextView>
 
 
     <GridView
@@ -32,7 +34,7 @@
         android:layout_marginLeft="48px"
         android:layout_marginTop="48px"
         android:layout_marginRight="48px"
-        android:layout_marginBottom="192px"
+        android:layout_marginBottom="19px"
         android:numColumns="1"
         android:verticalSpacing="24px"></GridView>
 

@@ -1,15 +1,19 @@
 package com.flying.famous.quotes.manager;
 
+import android.util.Log;
+
 import com.flying.famous.quotes.MyApp;
 import com.flying.famous.quotes.db.DBManager;
-import com.flying.famous.quotes.db.Like;
-import com.flying.famous.quotes.db.Quotes;
+import com.flying.famous.quotes.db.entity.Like;
+import com.flying.famous.quotes.db.entity.Quotes;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class LikeManager {
+    private static final String TAG = LikeManager.class.getSimpleName();
     private Map<Long, Like> likeMap = new ConcurrentHashMap<>();
 
     private static class Inner {
@@ -25,11 +29,17 @@ public class LikeManager {
 
     public void init() {
         List<Like> likes = DBManager.INSTANCE().getLikeDao().loadAll();
+        Log.i(TAG, "likes.size = " + likes);
         if (likes != null && likes.size() > 0) {
             for (Like like : likes) {
                 likeMap.put(like.getQid(), like);
             }
         }
+        Log.i(TAG, "likeMap.size = " + likeMap.size());
+    }
+
+    public Collection<Long> getLikesQuotesIds() {
+        return likeMap.keySet();
     }
 
     public void likeOrNot(Quotes quotes) {

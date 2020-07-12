@@ -45,6 +45,7 @@ public class DataManager {
             Log.i(TAG, "key  = " + key + "; size" + map.get(key).size());
             DBManager.INSTANCE().getQuotesDao().insertOrReplaceInTx(map.get(key));
         }
+
     }
 
 

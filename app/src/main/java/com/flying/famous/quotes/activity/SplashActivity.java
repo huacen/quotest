@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
-import com.bumptech.glide.Glide;
 import com.flying.famous.quotes.R;
 import com.flying.famous.quotes.db.DBManager;
 import com.flying.famous.quotes.manager.DataManager;
@@ -66,10 +64,9 @@ public class SplashActivity extends AutoLayoutActivity implements EasyPermission
             @Override
             public void run() {
                 DBManager.INSTANCE().init(SplashActivity.this);
-                boolean init = SharedPreferencesUtils.init(SplashActivity.this).getBoolean("db_init", false);
-                if (!init) {
+                TypeManager.getInstance().init();
+                if (TypeManager.getInstance().getAllTypes().size() == 0) {
                     DataManager.getInstance().syncInit();
-                    SharedPreferencesUtils.init(SplashActivity.this).putBoolean("db_init", true);
                 }
                 LikeManager.getInstance().init();
                 TypeManager.getInstance().init();

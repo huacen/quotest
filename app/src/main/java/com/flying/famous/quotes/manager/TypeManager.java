@@ -61,7 +61,7 @@ public class TypeManager {
         addTypeConfig(new TypeConfig("Architecture", R.drawable.architecture, "#BB5D4C"));
         addTypeConfig(new TypeConfig("Art", R.drawable.art, "#F78E36"));
         addTypeConfig(new TypeConfig("Attitude", R.drawable.attitude, "#3584AD"));
-        addTypeConfig(new TypeConfig("Age", R.drawable.age, "##94347A"));
+        addTypeConfig(new TypeConfig("Age", R.drawable.age, "#94347A"));
 
 
         addTypeConfig(new TypeConfig("Beauty", R.drawable.beauty, "#E85D49"));

@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -23,6 +24,9 @@ import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.flying.famous.quotes.R;
+import com.flying.famous.quotes.db.entity.Type;
+import com.flying.famous.quotes.manager.DataManager;
+import com.flying.famous.quotes.manager.TypeManager;
 import com.flying.famous.quotes.view.RoundedCornersTransformation;
 import com.flying.famous.quotes.db.DBManager;
 import com.flying.famous.quotes.db.entity.Quotes;
@@ -48,6 +52,7 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
     private List<String> imageList = new ArrayList<String>();
     private int index = -1;
     private ClipboardManager cm;
+    private boolean isLike = false;
 
 
     private View.OnClickListener change = new View.OnClickListener() {
@@ -126,6 +131,7 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
         if (id > 0) {
             quotes = DBManager.INSTANCE().getQuotesDao().queryBuilder().where(QuotesDao.Properties.Tid.eq(id)).build().list();
         } else {
+            isLike = true;
             Collection<Long> ids = LikeManager.getInstance().getLikesQuotesIds();
             quotes = DBManager.INSTANCE().getQuotesDao().queryBuilder().where(QuotesDao.Properties.Id.in(ids)).build().list();
         }
@@ -142,8 +148,9 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
         findViewById(R.id.back).setOnClickListener(this);
 
         // 圆角图片 new RoundedCornersTransformation 参数为 ：半径 , 外边距 , 圆角方向(ALL,BOTTOM,TOP,RIGHT,LEFT,BOTTOM_LEFT等等)
-        RoundedCornersTransformation transformation = new RoundedCornersTransformation(30, 0, RoundedCornersTransformation.CornerType.TOP_LEFT);
-        RoundedCornersTransformation transformation1 = new RoundedCornersTransformation(30, 0, RoundedCornersTransformation.CornerType.TOP_RIGHT);
+        int radius = isLike ? 0 : 30;
+        RoundedCornersTransformation transformation = new RoundedCornersTransformation(radius, 0, RoundedCornersTransformation.CornerType.TOP_LEFT);
+        RoundedCornersTransformation transformation1 = new RoundedCornersTransformation(radius, 0, RoundedCornersTransformation.CornerType.TOP_RIGHT);
         mation = new MultiTransformation<>(new CenterCrop(), transformation, transformation1);
 
         imageList.add("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3984473917,238095211&fm=26&gp=0.jpg");
@@ -203,6 +210,10 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
                 holder.save = convertView.findViewById(R.id.save);
                 holder.copy = convertView.findViewById(R.id.copy);
                 holder.share = convertView.findViewById(R.id.share);
+                holder.top = convertView.findViewById(R.id.top);
+                holder.heard = convertView.findViewById(R.id.heard);
+                holder.heardIcon = convertView.findViewById(R.id.type_icon);
+                holder.heardName = convertView.findViewById(R.id.type_name);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
@@ -225,6 +236,20 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
             holder.text.setText(quotes.getText());
             boolean isLike = LikeManager.getInstance().isLike(quotes);
             holder.likeIcon.setImageResource(isLike ? R.drawable.like : R.drawable.like_default);
+
+
+            holder.heard.setVisibility(isLike ? View.VISIBLE : View.GONE);
+
+            if (MoodActivity.this.isLike) {
+                GradientDrawable drawable = (GradientDrawable) holder.top.getBackground();
+                drawable.setCornerRadius(0);
+                holder.top.setBackground(drawable);
+                Type type = TypeManager.getInstance().getType(quotes.getTid());
+                TypeManager.TypeConfig config = TypeManager.getInstance().getConfig(type.getName());
+                holder.heardIcon.setImageResource(config.iconRes);
+                holder.heardName.setText(type.getName());
+            }
+
 
 //            String url = getImageUrl();
 //            if (!TextUtils.isEmpty(url)) {
@@ -249,6 +274,10 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
             View save;
             View copy;
             View share;
+            View top;
+            View heard;
+            TextView heardName;
+            ImageView heardIcon;
 
         }
     }

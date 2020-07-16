@@ -38,6 +38,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 
 public class MoodActivity extends AutoLayoutActivity implements View.OnClickListener {
 
@@ -281,4 +283,8 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
         }
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 }

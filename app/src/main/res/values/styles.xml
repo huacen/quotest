@@ -19,4 +19,9 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
+    <style name="TextAppearance.FontPath" parent="android:TextAppearance">
+        <!-- Custom Attr-->
+        <item name="fontPath">fonts/PTC55F.ttf</item>
+    </style>
+
 </resources>

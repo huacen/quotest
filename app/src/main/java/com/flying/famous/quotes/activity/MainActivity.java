@@ -1,6 +1,7 @@
 package com.flying.famous.quotes.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
@@ -37,6 +38,8 @@ import com.zhy.autolayout.AutoLayoutActivity;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AutoLayoutActivity implements View.OnClickListener {
     private static final String TAG = MoodActivity.class.getSimpleName();
@@ -239,5 +242,10 @@ public class MainActivity extends AutoLayoutActivity implements View.OnClickList
             ImageView icon;
             View bg;
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

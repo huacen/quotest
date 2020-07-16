@@ -12,7 +12,6 @@ import com.flying.famous.quotes.db.DBManager;
 import com.flying.famous.quotes.manager.DataManager;
 import com.flying.famous.quotes.manager.LikeManager;
 import com.flying.famous.quotes.manager.TypeManager;
-import com.heima.easysp.SharedPreferencesUtils;
 import com.zhy.autolayout.AutoLayoutActivity;
 
 import java.util.List;

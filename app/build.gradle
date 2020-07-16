@@ -13,11 +13,16 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
         release {
+            keyAlias 'alias'
+            keyPassword 'zrxyh521'
+            storeFile file('E:/code_test/FamousQuotes/app/quotes.jks')
+            storePassword 'zrxyh521'
+        }
+        debug {
             keyAlias 'alias'
             keyPassword 'zrxyh521'
             storeFile file('E:/code_test/FamousQuotes/app/quotes.jks')
@@ -33,9 +38,9 @@ android {
     buildTypes {
         debug{
             minifyEnabled false
-            proguardFile 'proguard-rules.pro'
+//            proguardFile 'proguard-rules.pro'
 //            zipAlignEnabled true
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
         }
         release {
             minifyEnabled true
@@ -71,8 +76,7 @@ dependencies {
     implementation 'com.android.support:design:25.3.1'
     implementation 'pub.devrel:easypermissions:2.0.1'
     implementation 'com.github.zongxiaomi:AndroidMail:1.07'
-
-
+    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
 }
 greendao{
     schemaVersion 2
@@ -80,5 +84,5 @@ greendao{
     targetGenDir 'src/main/java'
 }
 repositories {
-    mavenCentral()
+    maven { url 'https://maven.aliyun.com/repository/public/' }
 }

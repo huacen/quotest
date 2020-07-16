@@ -8,6 +8,9 @@ import com.heima.easysp.SharedPreferencesUtils;
 
 import java.util.UUID;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class MyApp extends Application {
     public static Context context;
     public static String uuid;
@@ -17,7 +20,14 @@ public class MyApp extends Application {
         super.onCreate();
         context = this;
         initUuid();
+
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/font.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
     }
+
 
     private void initUuid() {
         uuid = SharedPreferencesUtils.init(context).getString("uuid");

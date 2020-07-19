@@ -52,6 +52,7 @@ public class MainActivity extends AutoLayoutActivity implements View.OnClickList
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private long lastTime = 0;
+    private View delete;
 
     private TextWatcherAdapter textWatcherAdapter = new TextWatcherAdapter() {
         @Override
@@ -60,6 +61,7 @@ public class MainActivity extends AutoLayoutActivity implements View.OnClickList
             String keyword = editable.toString();
             List<Type> list = TextUtils.isEmpty(keyword) ? data : filterData(keyword);
             myAdapter.setData(list);
+            delete.setVisibility(TextUtils.isEmpty(keyword) ? View.GONE : View.VISIBLE);
         }
     };
     private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
@@ -130,7 +132,7 @@ public class MainActivity extends AutoLayoutActivity implements View.OnClickList
         editText.addTextChangedListener(textWatcherAdapter);
         navigationView.setNavigationItemSelectedListener(listener);
         layoutInflater = LayoutInflater.from(this);
-
+        delete = findViewById(R.id.delete);
         gridView.setAdapter(myAdapter);
         gridView.setOnItemClickListener(onItemClickListener);
 

@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId "com.flying.famous.quotes"
         minSdkVersion 26
-        targetSdkVersion 30
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -19,13 +19,13 @@ android {
         release {
             keyAlias 'alias'
             keyPassword 'zrxyh521'
-            storeFile file('E:/code_test/FamousQuotes/app/quotes.jks')
+            storeFile file('quotes.jks')
             storePassword 'zrxyh521'
         }
         debug {
             keyAlias 'alias'
             keyPassword 'zrxyh521'
-            storeFile file('E:/code_test/FamousQuotes/app/quotes.jks')
+            storeFile file('quotes.jks')
             storePassword 'zrxyh521'
         }
     }

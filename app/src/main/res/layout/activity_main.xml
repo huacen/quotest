@@ -47,6 +47,7 @@
             <ImageView
                 android:id="@+id/delete"
                 android:layout_width="72px"
+                android:visibility="gone"
                 android:layout_height="72px"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"

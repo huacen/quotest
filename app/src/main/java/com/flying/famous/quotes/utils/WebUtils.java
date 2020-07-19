@@ -10,7 +10,7 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 public class WebUtils {
 
     public static void rateUs() {
-        open("https://play.google.com/store/apps/details?id=com.manchesterapps.quotesandstatus");
+        open("https://play.google.com/store/apps/details?id=" + MyApp.context.getPackageName());
     }
 
     public static void toFacebook() {

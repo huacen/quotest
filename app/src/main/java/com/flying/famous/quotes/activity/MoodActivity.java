@@ -154,17 +154,20 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
         RoundedCornersTransformation transformation1 = new RoundedCornersTransformation(radius, 0, RoundedCornersTransformation.CornerType.TOP_RIGHT);
         mation = new MultiTransformation<>(new CenterCrop(), transformation, transformation1);
 
-        imageList.add("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3984473917,238095211&fm=26&gp=0.jpg");
-        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593274233826&di=127a806c1f6250db0905c9cfc2d086a2&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F14%2F75%2F01300000164186121366756803686.jpg");
-        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593274233826&di=6f5a480c8e05a8fcc87dc7444625f103&imgtype=0&src=http%3A%2F%2Fa0.att.hudong.com%2F56%2F12%2F01300000164151121576126282411.jpg");
-        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593274287279&di=d89ac4e0e0e6a198c7480bdd49b87704&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201401%2F23%2F095609lsejfi4thjrrwydj.jpg");
-        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593274287279&di=aca05c3accb56a195ca99b9889257580&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201208%2F05%2F070711tbbgstxstin0mxr5.jpg");
-        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593274287279&di=6382ce83cd868eac56b1dcffc56cd98c&imgtype=0&src=http%3A%2F%2F01.minipic.eastday.com%2F20170330%2F20170330044723_a0c69f758cc90e87e8c8e620eb55308e_2.jpeg");
+//        imageList.add("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3984473917,238095211&fm=26&gp=0.jpg");
+//        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593274233826&di=127a806c1f6250db0905c9cfc2d086a2&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F14%2F75%2F01300000164186121366756803686.jpg");
+//        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593274233826&di=6f5a480c8e05a8fcc87dc7444625f103&imgtype=0&src=http%3A%2F%2Fa0.att.hudong.com%2F56%2F12%2F01300000164151121576126282411.jpg");
+//        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593274287279&di=d89ac4e0e0e6a198c7480bdd49b87704&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201401%2F23%2F095609lsejfi4thjrrwydj.jpg");
+//        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593274287279&di=aca05c3accb56a195ca99b9889257580&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201208%2F05%2F070711tbbgstxstin0mxr5.jpg");
+//        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593274287279&di=6382ce83cd868eac56b1dcffc56cd98c&imgtype=0&src=http%3A%2F%2F01.minipic.eastday.com%2F20170330%2F20170330044723_a0c69f758cc90e87e8c8e620eb55308e_2.jpeg");
 
     }
 
 
     private String getImageUrl() {
+        if (imageList == null || imageList.size() == 0) {
+            return "";
+        }
         Log.i(TAG, "index = " + index);
         index++;
         if (index >= imageList.size() - 1) {

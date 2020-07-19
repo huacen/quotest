@@ -2,6 +2,7 @@ package com.flying.famous.quotes.manager;
 
 import android.util.Log;
 
+import com.flying.famous.quotes.MyApp;
 import com.flying.famous.quotes.db.DBManager;
 import com.flying.famous.quotes.db.entity.Quotes;
 import com.flying.famous.quotes.db.entity.Type;
@@ -12,7 +13,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -33,6 +36,39 @@ public class DataManager {
     }
 
     private DataManager() {
+    }
+
+    public void copyDataBaseIfNeed(boolean force) {
+        String DATABASE_PATH = "/data/data/" + MyApp.context.getPackageName() + "/databases/";
+        String outFileName = DATABASE_PATH + DBManager.TABLENAME;
+        File out = new File(outFileName);
+        if (out.exists() && !force) {
+            return;
+        }
+        File file = new File(DATABASE_PATH);
+        File[] files = file.listFiles();
+        if (files != null && files.length > 0) {
+            for (File f : files) {
+                f.delete();
+            }
+        }
+        file.mkdirs();
+
+
+        try {
+            InputStream myInput = MyApp.context.getAssets().open(DBManager.TABLENAME);
+            OutputStream myOutput = new FileOutputStream(outFileName);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = myInput.read(buffer)) > 0) {
+                myOutput.write(buffer, 0, length);
+            }
+            myOutput.flush();
+            myOutput.close();
+            myInput.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void syncInit() {

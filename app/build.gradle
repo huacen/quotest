@@ -77,6 +77,8 @@ dependencies {
     implementation 'pub.devrel:easypermissions:2.0.1'
     implementation 'com.github.zongxiaomi:AndroidMail:1.07'
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+    implementation 'com.github.tbruyelle:rxpermissions:0.12'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
 }
 greendao{
     schemaVersion 2
@@ -85,4 +87,5 @@ greendao{
 }
 repositories {
     maven { url 'https://maven.aliyun.com/repository/public/' }
+    maven { url 'https://jitpack.io' }
 }

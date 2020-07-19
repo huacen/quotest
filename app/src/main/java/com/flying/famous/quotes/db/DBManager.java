@@ -11,7 +11,7 @@ import com.flying.famous.quotes.db.gen.TypeDao;
 
 public class DBManager {
     private DaoSession daoSession;
-    private static final String TABLENAME = "quotes.db";
+    public static final String TABLENAME = "quotes.db";
 
     private static class Inner {
         private static final DBManager INSTANCE = new DBManager();
@@ -42,4 +42,5 @@ public class DBManager {
     public LikeDao getLikeDao() {
         return daoSession.getLikeDao();
     }
+
 }

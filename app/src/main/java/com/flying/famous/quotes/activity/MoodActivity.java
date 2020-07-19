@@ -97,7 +97,7 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
             int index = (int) view.getTag();
             ClipData mClipData = ClipData.newPlainText("Label", list.get(index).getText());
             cm.setPrimaryClip(mClipData);
-            Toast.makeText(MoodActivity.this.getApplicationContext(), "已复制到剪贴板", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MoodActivity.this.getApplicationContext(), "Copied to clipboard", Toast.LENGTH_SHORT).show();
         }
     };
     private View.OnClickListener share = new View.OnClickListener() {

@@ -13,7 +13,7 @@ public class EmailUtils {
 
 
     public static void sendEmailDuo(Context context) {
-        String[] tos = {"421665909@qq.com"};
+        String[] tos = {"huacentech@gmail.com"};
         Intent intent = new Intent(android.content.Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_EMAIL, tos);
         intent.setType("text/plain");

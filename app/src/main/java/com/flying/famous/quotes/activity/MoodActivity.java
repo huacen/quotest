@@ -54,6 +54,7 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
     private int index = -1;
     private ClipboardManager cm;
     private boolean isLike = false;
+    private View empty;
 
 
     private View.OnClickListener change = new View.OnClickListener() {
@@ -141,9 +142,11 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
             list.addAll(quotes);
         }
 
+
         cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
 
         gridView = findViewById(R.id.gridView);
+        empty = findViewById(R.id.empty);
         layoutInflater = LayoutInflater.from(this);
         gridView.setAdapter(new MyAdapter());
         findViewById(R.id.back).setOnClickListener(this);
@@ -160,7 +163,9 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
 //        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593274287279&di=d89ac4e0e0e6a198c7480bdd49b87704&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201401%2F23%2F095609lsejfi4thjrrwydj.jpg");
 //        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593274287279&di=aca05c3accb56a195ca99b9889257580&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201208%2F05%2F070711tbbgstxstin0mxr5.jpg");
 //        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593274287279&di=6382ce83cd868eac56b1dcffc56cd98c&imgtype=0&src=http%3A%2F%2F01.minipic.eastday.com%2F20170330%2F20170330044723_a0c69f758cc90e87e8c8e620eb55308e_2.jpeg");
-
+        if (isLike && list.size() == 0) {
+            empty.setVisibility(View.VISIBLE);
+        }
     }
 
 

@@ -51,6 +51,8 @@ public class SplashActivity extends AutoLayoutActivity {
                                 new AppSettingsDialog.Builder(SplashActivity.this)
                                         .setRationale("     Please modify application permission in the application settings!")
                                         .setTitle("Permission required")
+                                        .setNegativeButton("cancel")
+                                        .setPositiveButton("ok")
                                         .build()
                                         .show();
                                 return;

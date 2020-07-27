@@ -101,7 +101,7 @@
     <!-- 右边菜单 -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
-        android:layout_width="360dp"
+        android:layout_width="260dp"
         android:layout_height="match_parent"
         android:layout_gravity="end"
         app:headerLayout="@layout/head_layout"

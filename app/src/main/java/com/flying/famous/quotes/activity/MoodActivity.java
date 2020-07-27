@@ -25,23 +25,20 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.flying.famous.quotes.R;
 import com.flying.famous.quotes.db.DBManager;
-import com.flying.famous.quotes.db.entity.Type;
-import com.flying.famous.quotes.manager.TypeManager;
-import com.flying.famous.quotes.view.RoundedCornersTransformation;
 import com.flying.famous.quotes.db.entity.Quotes;
+import com.flying.famous.quotes.db.entity.Type;
 import com.flying.famous.quotes.db.gen.QuotesDao;
 import com.flying.famous.quotes.manager.LikeManager;
 import com.flying.famous.quotes.manager.ShareManager;
-import com.zhy.autolayout.AutoLayoutActivity;
+import com.flying.famous.quotes.manager.TypeManager;
+import com.flying.famous.quotes.view.RoundedCornersTransformation;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-
-public class MoodActivity extends AutoLayoutActivity implements View.OnClickListener {
+public class MoodActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = MoodActivity.class.getSimpleName();
 
@@ -291,8 +288,4 @@ public class MoodActivity extends AutoLayoutActivity implements View.OnClickList
         }
     }
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
 }

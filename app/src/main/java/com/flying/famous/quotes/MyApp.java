@@ -8,8 +8,9 @@ import com.heima.easysp.SharedPreferencesUtils;
 
 import java.util.UUID;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+import io.github.inflationx.calligraphy3.CalligraphyConfig;
+import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
+import io.github.inflationx.viewpump.ViewPump;
 
 public class MyApp extends Application {
     public static Context context;
@@ -21,11 +22,13 @@ public class MyApp extends Application {
         context = this;
         initUuid();
 
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/font.ttf")
-                .setFontAttrId(R.attr.fontPath)
-                .build()
-        );
+        ViewPump.init(ViewPump.builder()
+                .addInterceptor(new CalligraphyInterceptor(
+                        new CalligraphyConfig.Builder()
+                                .setDefaultFontPath("fonts/Roboto-RobotoRegular.ttf")
+                                .setFontAttrId(R.attr.fontPath)
+                                .build()))
+                .build());
     }
 
 

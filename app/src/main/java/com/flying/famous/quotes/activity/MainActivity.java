@@ -1,7 +1,6 @@
 package com.flying.famous.quotes.activity;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
@@ -33,15 +32,13 @@ import com.flying.famous.quotes.manager.TypeManager;
 import com.flying.famous.quotes.utils.EmailUtils;
 import com.flying.famous.quotes.utils.WebUtils;
 import com.google.android.material.navigation.NavigationView;
-import com.zhy.autolayout.AutoLayoutActivity;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class MainActivity extends AutoLayoutActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = MoodActivity.class.getSimpleName();
     private GridView gridView;
     private EditText editText;
@@ -246,8 +243,5 @@ public class MainActivity extends AutoLayoutActivity implements View.OnClickList
         }
     }
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
+
 }

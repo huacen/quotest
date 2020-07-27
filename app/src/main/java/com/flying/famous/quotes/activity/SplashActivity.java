@@ -11,7 +11,6 @@ import com.flying.famous.quotes.manager.DataManager;
 import com.flying.famous.quotes.manager.LikeManager;
 import com.flying.famous.quotes.manager.TypeManager;
 import com.tbruyelle.rxpermissions3.RxPermissions;
-import com.zhy.autolayout.AutoLayoutActivity;
 
 import io.reactivex.rxjava3.functions.Consumer;
 import pub.devrel.easypermissions.AppSettingsDialog;
@@ -20,7 +19,7 @@ import static android.Manifest.permission.ACCESS_NETWORK_STATE;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
-public class SplashActivity extends AutoLayoutActivity {
+public class SplashActivity extends BaseActivity {
     private static final String TAG = "SplashActivity";
     public final static String[] perms = {WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE, ACCESS_NETWORK_STATE};
     private Handler handler = new Handler();

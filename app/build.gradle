@@ -10,9 +10,9 @@ android {
     defaultConfig {
         applicationId "com.flying.famous.quotes"
         minSdkVersion 26
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 29
+        versionCode 4
+        versionName "1.4"
     }
 
     signingConfigs {
@@ -72,7 +72,8 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:design:25.3.1'
     implementation 'pub.devrel:easypermissions:2.0.1'
-    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'io.github.inflationx:viewpump:2.0.3'
     implementation 'com.github.tbruyelle:rxpermissions:0.12'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
 }

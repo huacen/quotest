@@ -153,7 +153,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         if (view.getId() == R.id.delete) {
             editText.setText("");
         } else if (view.getId() == R.id.menu) {
-            drawerLayout.openDrawer(Gravity.END);
+            drawerLayout.openDrawer(Gravity.START);
         }
     }
 

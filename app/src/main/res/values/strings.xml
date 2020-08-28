@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Quotes</string>
+    <string name="app_name">Best Quotes Status</string>
+    <string name="share">Share</string>
+    <string name="copy">Copy</string>
+    <string name="save">Save</string>
+    <string name="like">Like</string>
+    <string name="search">Search ...</string>
 </resources>

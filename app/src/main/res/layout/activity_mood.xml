@@ -7,23 +7,23 @@
 
     <ImageView
         android:id="@+id/back"
-        android:layout_width="93px"
-        android:layout_height="93px"
-        android:layout_marginLeft="48px"
-        android:layout_marginTop="45px"
-        android:layout_marginRight="48px"
-        android:src="@drawable/back"></ImageView>
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/back" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="93px"
+        android:layout_height="40dp"
         android:layout_alignBottom="@id/back"
-        android:layout_toRightOf="@id/back"
+        android:layout_toEndOf="@id/back"
         android:gravity="center_vertical"
-        android:text="Best Quotes  Status"
+        android:text="@string/app_name"
         android:textColor="#4D4D4D"
         android:textSize="20sp"
-        android:textStyle="bold"></TextView>
+        android:textStyle="bold" />
 
 
     <GridView
@@ -31,12 +31,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/back"
-        android:layout_marginLeft="48px"
-        android:layout_marginTop="48px"
-        android:layout_marginRight="48px"
-        android:layout_marginBottom="19px"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:numColumns="1"
-        android:verticalSpacing="24px"></GridView>
+        android:verticalSpacing="16dp" />
 
     <TextView
         android:id="@+id/empty"
@@ -48,5 +48,5 @@
         android:textSize="20sp"
         android:text="Mark the one you like, \nand then you can see it here!"
         android:textColor="@android:color/black"
-        android:visibility="gone"></TextView>
+        android:visibility="gone" />
 </RelativeLayout>
